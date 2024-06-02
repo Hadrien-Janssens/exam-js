@@ -1,6 +1,13 @@
 import { ROUTE_CHANGED_EVENT } from "../framework/app";
 
 export const Nav = (element) => {
+  const links = [
+    { href: "/", text: "Accueil" },
+    { href: "/counter", text: "Compteur" },
+    { href: "/contact", text: "Contact" },
+    { href: "/users", text: "Utilisateurs" },
+  ];
+
   element.innerHTML = `
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -10,15 +17,14 @@ export const Nav = (element) => {
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/counter">Compteur</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/contact">Contact</a>
-            </li>
+            ${links
+              .map(
+                (link) => `
+                <li class="nav-item">
+                  <a class="nav-link" href="${link.href}">${link.text}</a>
+                </li>`
+              )
+              .join("")}
           </ul>
         </div>
       </div>
