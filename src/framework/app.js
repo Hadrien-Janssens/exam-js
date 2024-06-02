@@ -1,5 +1,5 @@
-import { Layout } from "../components/Layout";
-import { Nav } from "../components/Nav";
+import { Layout } from "../layouts/Layout.js";
+import { Nav } from "../layouts/Nav.js";
 
 export const ROUTE_CHANGED_EVENT = "route-changed";
 
