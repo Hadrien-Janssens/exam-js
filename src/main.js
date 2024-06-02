@@ -8,9 +8,9 @@ import { Users } from "./pages/Users.js";
 
 const routes = {
   "/": Home,
-  "/counter": Counter,
+  "/compteur": Counter,
   "/contact": Contact,
-  "/users": Users,
+  "/utilisateurs": Users,
 };
 
 app("#app", routes);

@@ -1,17 +1,19 @@
 import { ROUTE_CHANGED_EVENT } from "../framework/app";
 
 export const Nav = (element) => {
+  const appName = "Une App";
+
   const links = [
     { href: "/", text: "Accueil" },
-    { href: "/counter", text: "Compteur" },
+    { href: "/compteur", text: "Compteur" },
     { href: "/contact", text: "Contact" },
-    { href: "/users", text: "Utilisateurs" },
+    { href: "/utilisateurs", text: "Utilisateurs" },
   ];
 
   element.innerHTML = `
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Une App</a>
+        <a class="navbar-brand" href="/">${appName}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -31,7 +33,7 @@ export const Nav = (element) => {
     </nav>
     `;
 
-  const replaceLinks = () => {
+  const replaceLinksByEvents = () => {
     const links = element.querySelectorAll("a");
     for (let i = 0; i < links.length; i++) {
       links[i].addEventListener("click", (event) => {
@@ -41,6 +43,7 @@ export const Nav = (element) => {
 
         removeActive();
         markAsActive();
+        changePageTitle();
       });
     }
   };
@@ -59,12 +62,19 @@ export const Nav = (element) => {
     activeLink.classList.add("active");
   };
 
+  const changePageTitle = () => {
+    const activeLink = element.querySelector("a.active");
+    document.title = `${activeLink.textContent} - ${appName}`;
+  };
+
   markAsActive();
-  replaceLinks();
+  replaceLinksByEvents();
+  changePageTitle();
 
   window.addEventListener("popstate", () => {
     removeActive();
     markAsActive();
+    changePageTitle();
     element.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
   });
 };
