@@ -3,7 +3,7 @@ import { PrimaryButton } from "../components/PrimaryButton";
 import { TextInput } from "../components/TextInput";
 import { TextareaInput } from "../components/TextareaInput";
 
-export function Contact(element) {
+export const Contact = (element) => {
   element.innerHTML = `
         <h1>Contact</h1>
         <form>
@@ -37,4 +37,4 @@ export function Contact(element) {
 
     form.reset();
   });
-}
+};

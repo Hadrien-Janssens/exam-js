@@ -1,5 +1,5 @@
-export function TextInput(name, value, type = "text", placeholder = "") {
+export const TextInput = (name, value, type = "text", placeholder = "") => {
   return `
-    <input type="${type}" name="${name}" value="${value}" placeholder="${placeholder}" class="form-control">
+    <input id="${name}" type="${type}" name="${name}" value="${value}" placeholder="${placeholder}" class="form-control">
     `;
-}
+};

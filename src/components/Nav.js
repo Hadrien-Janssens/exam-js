@@ -1,6 +1,6 @@
-import { ROUTE_CHANGED_EVENT } from "../app";
+import { ROUTE_CHANGED_EVENT } from "../framework/app";
 
-export function Nav(element) {
+export const Nav = (element) => {
   element.innerHTML = `
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -61,4 +61,4 @@ export function Nav(element) {
     markAsActive();
     element.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
   });
-}
+};

@@ -1,18 +1,12 @@
-import { Nav } from "./components/Nav";
+import { Layout } from "../components/Layout";
+import { Nav } from "../components/Nav";
 
 export const ROUTE_CHANGED_EVENT = "route-changed";
-
-const layout = `
-  <header>
-  </header>
-  <main class="container mt-5">
-  </main>
-`;
 
 export const app = (elementId, routes) => {
   const appElement = document.querySelector(elementId);
 
-  appElement.innerHTML = layout;
+  appElement.innerHTML = Layout();
 
   const headerElement = document.querySelector("header");
   const mainElement = document.querySelector("main");
