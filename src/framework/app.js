@@ -1,5 +1,6 @@
 import { Layout } from "../layouts/Layout.js";
 import { Nav } from "../layouts/Nav.js";
+import { NotFound } from "../pages/404.js";
 
 export const ROUTE_CHANGED_EVENT = "route-changed";
 
@@ -14,6 +15,12 @@ export const app = (elementId, routes) => {
 
   const changePage = () => {
     const page = routes[currentRoute];
+
+    if (!page) {
+      NotFound(mainElement);
+      return;
+    }
+
     page(mainElement);
   };
 
