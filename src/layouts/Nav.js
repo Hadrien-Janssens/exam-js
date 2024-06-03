@@ -59,11 +59,19 @@ export const Nav = (element) => {
     const activeLink = element.querySelector(
       `a.nav-link[href="${window.location.pathname}"]`
     );
+    if (!activeLink) {
+      return;
+    }
     activeLink.classList.add("active");
   };
 
   const changePageTitle = () => {
     const activeLink = element.querySelector("a.active");
+    if (!activeLink) {
+      document.title = appName;
+      return;
+    }
+
     document.title = `${activeLink.textContent} - ${appName}`;
   };
 

@@ -1,3 +1,4 @@
+import { ROUTE_CHANGED_EVENT } from "../framework/app";
 import { Pagination } from "./Pagination";
 import { TextInput } from "./TextInput";
 
@@ -64,6 +65,16 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
         filterAndPaginate();
       });
     });
+
+    const cardsLinks = listElement.querySelectorAll("a");
+    for (let i = 0; i < cardsLinks.length; i++) {
+      cardsLinks[i].addEventListener("click", (event) => {
+        event.preventDefault();
+        window.history.pushState({}, "", event.currentTarget.href);
+        const headerElement = document.querySelector("header");
+        headerElement.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
+      });
+    }
   };
 
   filterAndPaginate();
