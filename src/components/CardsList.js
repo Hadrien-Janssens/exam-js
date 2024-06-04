@@ -3,8 +3,9 @@ import { Pagination } from "./Pagination";
 import { TextInput } from "./TextInput";
 
 export const CardsList = (element, items, itemTemplate, searchableFields) => {
+  let currentPage =
+    parseInt(new URL(window.location).searchParams.get("page")) || 1;
   let filteredItems = items;
-  let currentPage = 1;
 
   const id = `list-${Math.random().toString(36).slice(2)}`;
 
@@ -57,9 +58,14 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
     paginationElement.innerHTML = Pagination(currentPage, pages);
 
     const paginationLinks = paginationElement.querySelectorAll("a");
-    const paginationLinkClickHandler = (e) => {
-      e.preventDefault();
-      currentPage = parseInt(e.target.href.split("=")[1]);
+    const paginationLinkClickHandler = (event) => {
+      event.preventDefault();
+      currentPage = parseInt(
+        new URL(event.currentTarget.href).searchParams.get("page")
+      );
+      const url = new URL(window.location);
+      url.searchParams.set("page", currentPage);
+      window.history.pushState({}, "", url);
       filterAndPaginate();
     };
     for (let i = 0; i < paginationLinks.length; i++) {
@@ -83,6 +89,12 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
   searchInput.addEventListener("input", (e) => {
     e.preventDefault();
     currentPage = 1;
+    filterAndPaginate();
+  });
+
+  window.addEventListener("popstate", () => {
+    currentPage =
+      parseInt(new URL(window.location).searchParams.get("page")) || 1;
     filterAndPaginate();
   });
 };
