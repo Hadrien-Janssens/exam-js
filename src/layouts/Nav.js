@@ -35,16 +35,17 @@ export const Nav = (element) => {
 
   const replaceLinksByEvents = () => {
     const links = element.querySelectorAll("a");
-    for (let i = 0; i < links.length; i++) {
-      links[i].addEventListener("click", (event) => {
-        event.preventDefault();
-        window.history.pushState({}, "", event.target.href);
-        element.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
+    const linkClickHandler = (event) => {
+      event.preventDefault();
+      window.history.pushState({}, "", event.target.href);
+      element.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
 
-        removeActive();
-        markAsActive();
-        changePageTitle();
-      });
+      removeActive();
+      markAsActive();
+      changePageTitle();
+    };
+    for (let i = 0; i < links.length; i++) {
+      links[i].addEventListener("click", linkClickHandler);
     }
   };
 

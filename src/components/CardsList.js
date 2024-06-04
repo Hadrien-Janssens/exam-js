@@ -57,23 +57,25 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
     listElement.innerHTML = renderList(filteredItems);
     paginationElement.innerHTML = Pagination(currentPage, pages);
 
-    const links = paginationElement.querySelectorAll("a");
-    links.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        currentPage = parseInt(e.target.href.split("=")[1]);
-        filterAndPaginate();
-      });
-    });
+    const paginationLinks = paginationElement.querySelectorAll("a");
+    const paginationLinkClickHandler = (e) => {
+      e.preventDefault();
+      currentPage = parseInt(e.target.href.split("=")[1]);
+      filterAndPaginate();
+    };
+    for (let i = 0; i < links.length; i++) {
+      paginationLinks[i].addEventListener("click", paginationLinkClickHandler);
+    }
 
     const cardsLinks = listElement.querySelectorAll("a");
+    const cardLinkClickHandler = (event) => {
+      event.preventDefault();
+      window.history.pushState({}, "", event.currentTarget.href);
+      const headerElement = document.querySelector("header");
+      headerElement.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
+    };
     for (let i = 0; i < cardsLinks.length; i++) {
-      cardsLinks[i].addEventListener("click", (event) => {
-        event.preventDefault();
-        window.history.pushState({}, "", event.currentTarget.href);
-        const headerElement = document.querySelector("header");
-        headerElement.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
-      });
+      cardsLinks[i].addEventListener("click", cardLinkClickHandler);
     }
   };
 

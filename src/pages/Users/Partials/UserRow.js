@@ -6,7 +6,7 @@ export const UserRow = (user) => {
       <td>${user.name}</td>
       <td>${user.email}</td>
       <td>${RoleBadge(user.role)}</td>
-      <td><a class="btn btn-success btn-sm" href="/utilisateur?id=${
+      <td><a class="btn btn-primary btn-sm" href="/utilisateur?id=${
         user.id
       }"><i class="ri-search-eye-line"></i></a></td>
     </tr>
