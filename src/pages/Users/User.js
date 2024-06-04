@@ -1,5 +1,5 @@
 import users from "../../storage/users.json";
-import { RoleBadge } from "./RoleBadge";
+import { RoleBadge } from "./Partials/RoleBadge";
 
 export const User = (element) => {
   const url = new URL(window.location.href);

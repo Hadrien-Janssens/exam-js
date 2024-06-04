@@ -11,6 +11,7 @@ export const app = (elementId, routes) => {
 
   const headerElement = document.querySelector("header");
   const mainElement = document.querySelector("main");
+  
   Nav(headerElement);
 
   const changePage = () => {

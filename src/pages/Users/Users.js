@@ -1,8 +1,9 @@
 import { CardsList } from "../../components/CardsList";
 import { DataTable } from "../../components/DataTable";
 import users from "../../storage/users.json";
-import { UserCard } from "./UserCard";
+import { UserCard } from "./Partials/UserCard";
 import { UserRow } from "./UserRow";
+
 
 export const Users = (element) => {
   let mode = "grid";
