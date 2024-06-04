@@ -4,7 +4,7 @@ export const Pagination = (currentPage, totalPages) => {
   }
 
   return `
-    <nav >
+    <nav class="mt-2">
       <ul class="pagination">
         <li class="page-item ${currentPage === 1 ? "disabled" : ""}">
           <a class="page-link" href="?page=${currentPage - 1}">Previous</a>
