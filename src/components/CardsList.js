@@ -38,7 +38,6 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
   const filterAndPaginate = (perPage = 12) => {
     const value = searchInput.value.toLowerCase();
     if (value !== "") {
-      currentPage = 1;
       filteredItems = items.filter(
         (item) =>
           searchableFields.filter((field) =>
@@ -63,7 +62,7 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
       currentPage = parseInt(e.target.href.split("=")[1]);
       filterAndPaginate();
     };
-    for (let i = 0; i < links.length; i++) {
+    for (let i = 0; i < paginationLinks.length; i++) {
       paginationLinks[i].addEventListener("click", paginationLinkClickHandler);
     }
 
@@ -83,6 +82,7 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
 
   searchInput.addEventListener("input", (e) => {
     e.preventDefault();
+    currentPage = 1;
     filterAndPaginate();
   });
 };

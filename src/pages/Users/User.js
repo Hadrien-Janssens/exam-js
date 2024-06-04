@@ -3,8 +3,8 @@ import { RoleBadge } from "./Partials/RoleBadge";
 
 export const User = (element) => {
   const url = new URL(window.location.href);
-  const userId = url.searchParams.get("id");
-  const user = users.find((user) => user.id === parseInt(userId));
+  const userId = parseInt(url.searchParams.get("id"));
+  const user = users.find((user) => user.id === userId);
 
   if (!user) {
     element.innerHTML = `

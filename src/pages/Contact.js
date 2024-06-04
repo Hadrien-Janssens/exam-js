@@ -30,9 +30,9 @@ export const Contact = (element) => {
     const data = new FormData(form);
 
     alert(`
-    Nom : ${data.get("name")}
-    Email : ${data.get("email")}
-    Message : ${data.get("message")}
+    Nom : ${data.get("name") ? data.get("name") : "?"}
+    Email : ${data.get("email") ? data.get("email") : "?"}
+    Message : ${data.get("message") ? data.get("message") : "?"}
     `);
 
     form.reset();
