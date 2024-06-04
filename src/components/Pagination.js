@@ -1,4 +1,11 @@
 export const Pagination = (currentPage, totalPages) => {
+  const url = new URL(window.location.href);
+
+  const urlWithPage = (page) => {
+    url.searchParams.set("page", page);
+    return url.toString();
+  };
+
   if (totalPages === 0) {
     return "";
   }
@@ -13,7 +20,9 @@ export const Pagination = (currentPage, totalPages) => {
           const pageNumber = i + 1;
           return `
             <li class="page-item ${currentPage === pageNumber ? "active" : ""}">
-              <a class="page-link" href="?page=${pageNumber}">${pageNumber}</a>
+              <a class="page-link" href="${urlWithPage(
+                pageNumber
+              )}">${pageNumber}</a>
             </li>
           `;
         }).join("")}
