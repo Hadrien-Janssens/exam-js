@@ -1,5 +1,5 @@
 export const TextareaInput = (name, value, placeholder = "", rows = 3) => {
   return `
-    <textarea name="${name}" rows="${rows}" class="form-control" placeholder="${placeholder}">${value}</textarea>
+    <textarea id="${name}" name="${name}" rows="${rows}" class="form-control" placeholder="${placeholder}">${value}</textarea>
     `;
 };
