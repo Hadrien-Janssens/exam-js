@@ -11,6 +11,8 @@ export const DataTable = (
 ) => {
   let currentPage =
     parseInt(new URL(window.location).searchParams.get("page")) || 1;
+  let searchInputValue =
+    new URL(window.location).searchParams.get("search") || "";
   let filteredItems = items;
 
   const id = `list-${Math.random().toString(36).slice(2)}`;
@@ -18,7 +20,7 @@ export const DataTable = (
   element.innerHTML = `
     <div class="row">
       <div class="col mb-2">
-        ${TextInput("search", "", "search", "Rechercher...")}
+        ${TextInput("search", searchInputValue, "search", "Rechercher...")}
       </div>
     </div>
     <table id="${id}" class="table table-stripped border align-middle">
@@ -54,7 +56,7 @@ export const DataTable = (
   };
 
   const filterAndPaginate = (perPage = 10) => {
-    const value = searchInput.value.toLowerCase();
+    const value = searchInputValue.toLowerCase();
     if (value !== "") {
       filteredItems = items.filter(
         (item) =>
@@ -105,7 +107,12 @@ export const DataTable = (
 
   searchInput.addEventListener("input", (e) => {
     e.preventDefault();
+    searchInputValue = e.target.value;
     currentPage = 1;
+    const url = new URL(window.location);
+    url.searchParams.set("search", searchInputValue);
+    url.searchParams.set("page", currentPage);
+    window.history.pushState({}, "", url);
     filterAndPaginate();
   });
 
