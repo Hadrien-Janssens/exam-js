@@ -1,4 +1,5 @@
 import "./style.scss";
+import "remixicon/fonts/remixicon.css";
 
 import { Counter } from "./pages/Counter.js";
 import { Contact } from "./pages/Contact.js";
