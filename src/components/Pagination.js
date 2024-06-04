@@ -1,3 +1,10 @@
+/**
+ * Pagination component
+ *
+ * @param {number} currentPage - Current page number
+ * @param {number} totalPages - Total number of pages
+ * @returns {string} HTML string
+ */
 export const Pagination = (currentPage, totalPages) => {
   const url = new URL(window.location.href);
 

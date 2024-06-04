@@ -2,6 +2,16 @@ import { ROUTE_CHANGED_EVENT } from "../framework/app";
 import { Pagination } from "./Pagination";
 import { TextInput } from "./TextInput";
 
+/**
+ * Un composant pour afficher un tableau paginé et filtrable.
+ *
+ * @param {HTMLElement} element
+ * @param {Object[]} items
+ * @param {Function} itemTemplate
+ * @param {string[]} searchableFields
+ * @param {string[]} tableHeadings
+ * @returns {void}
+ */
 export const DataTable = (
   element,
   items,
@@ -15,7 +25,7 @@ export const DataTable = (
     new URL(window.location).searchParams.get("search") || "";
   let filteredItems = items;
 
-  const id = `list-${Math.random().toString(36).slice(2)}`;
+  const id = `table-${Math.random().toString(36).slice(2)}`;
 
   element.innerHTML = `
     <div class="row">

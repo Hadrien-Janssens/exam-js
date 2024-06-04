@@ -1,5 +1,19 @@
 import { RoleBadge } from "./RoleBadge";
 
+/**
+ * @typedef {Object} User
+ * @property {number} id - L'identifiant de l'utilisateur.
+ * @property {string} name - Le nom de l'utilisateur.
+ * @property {string} email - L'adresse email de l'utilisateur.
+ * @property {string} role - Le rôle de l'utilisateur.
+ */
+
+/**
+ * Affiche une ligne d'un tableau d'utilisateurs
+ *
+ * @param {User} user
+ * @returns {string} HTML string
+ */
 export const UserRow = (user) => {
   return `
     <tr>

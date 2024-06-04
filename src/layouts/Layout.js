@@ -1,6 +1,10 @@
+/**
+ * Layout
+ * @returns {string} HTML string
+ */
 export const Layout = () => {
   const year = new Date().getFullYear();
-  
+
   return `
     <div class="d-flex flex-column min-vh-100">
       <header>

@@ -1,5 +1,18 @@
 import { Carousel as BootstrapCarousel } from "bootstrap";
 
+/**
+ * @typedef {Object} Image
+ * @property {string} src - L'URL de l'image.
+ * @property {string} title - Le titre de l'image.
+ * @property {string} description - La description de l'image.
+ */
+
+/**
+ * Carousel Component
+ *
+ * @param {Image[]} images
+ * @returns {string} HTML string
+ */
 export const Carousel = (images) => {
   return `
     <div id="carouselExampleCaptions" class="carousel slide">

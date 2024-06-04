@@ -1,6 +1,13 @@
 import { PrimaryButton } from "../components/PrimaryButton";
 
+/**
+ * Page de compteur
+ *
+ * @param {HTMLElement} element
+ * @returns {void}
+ */
 export const Counter = (element) => {
+  // on définit une constante pour l'événement de mise à jour du compteur
   const COUNTER_UPDATED_EVENT = "counter-updated";
   let counter = 0;
 
@@ -28,6 +35,7 @@ export const Counter = (element) => {
   document.querySelector("#increment-btn").addEventListener("click", increment);
   document.querySelector("#decrement-btn").addEventListener("click", decrement);
 
+  // On utilise un écouteur d'événement pour mettre à jour l'affichage du compteur
   element.addEventListener(COUNTER_UPDATED_EVENT, () => {
     element.querySelector("#counter-value").textContent = counter;
   });

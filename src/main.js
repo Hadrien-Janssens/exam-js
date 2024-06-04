@@ -1,12 +1,12 @@
 import "./style.scss";
 import "remixicon/fonts/remixicon.css";
 
-import { Counter } from "./pages/Counter.js";
-import { Contact } from "./pages/Contact.js";
-import { Home } from "./pages/Home.js";
-import { app } from "./framework/app.js";
-import { Users } from "./pages/Users/Users.js";
-import { User } from "./pages/Users/User.js";
+import { app } from "./framework/app";
+import { Counter } from "./pages/Counter";
+import { Contact } from "./pages/Contact";
+import { Home } from "./pages/Home";
+import { Users } from "./pages/Users/Users";
+import { User } from "./pages/Users/User";
 
 const routes = {
   "/": Home,

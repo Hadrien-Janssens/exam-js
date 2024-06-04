@@ -1,3 +1,9 @@
+/**
+ * Badge de rôle utilisateur
+ *
+ * @param {string} role
+ * @returns {string} HTML string
+ */
 export const RoleBadge = (role) => {
   const roles = {
     admin: "text-bg-danger",
