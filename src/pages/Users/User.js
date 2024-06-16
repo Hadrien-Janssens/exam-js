@@ -1,5 +1,4 @@
-import users from "../../storage/users.json";
-import { RoleBadge } from "./Partials/RoleBadge";
+import users from "../../storage/shoes.json";
 
 /**
  * Page des détails d'un utilisateur
@@ -25,7 +24,6 @@ export const User = (element) => {
 
   element.innerHTML = `
     <h1>${user.name}</h1>
-    <p>${user.email}</p>
-    ${RoleBadge(user.role)}
+    <p>${user.price}</p>
     `;
 };

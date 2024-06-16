@@ -1,1 +1,15 @@
 @import "bootstrap/scss/bootstrap";
+
+// permet d'étendre le href de la balise a
+a i,
+a span {
+  pointer-events: none;
+}
+#card-accueil {
+  height: 300px;
+  overflow: hidden;
+}
+#card-accueil img {
+  object-fit: contain;
+  transform: translateY(-50px);
+}

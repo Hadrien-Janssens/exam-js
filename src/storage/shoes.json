@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "Nike Air Max 95",
+    "desc": "basket",
+    "img_url": "/img/shoes1.jpeg",
+    "marque": 1,
+    "categorie": 1,
+    "price": 79.95
+  },
+  {
+    "id": 2,
+    "name": "Nike PH",
+    "desc": "basket",
+    "img_url": "/img/dunk-low-retro-shoes-Q2Gtpp.png",
+    "marque": 1,
+    "categorie": 1,
+    "price": 79.95
+  },
+  {
+    "id": 3,
+    "name": "Adidas Stan Smith",
+    "desc": "basket",
+    "img_url": "/img/images.jpeg",
+    "marque": 2,
+    "categorie": 1,
+    "price": 109.95
+  }
+]

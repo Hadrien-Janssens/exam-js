@@ -1,4 +1,5 @@
 import { ROUTE_CHANGED_EVENT } from "../framework/app";
+import { getTaskFromLocalStorage } from "../functions/localStorageManager";
 
 /**
  * @typedef {Object} Link
@@ -10,17 +11,25 @@ import { ROUTE_CHANGED_EVENT } from "../framework/app";
  * @param {HTMLElement} element
  * @returns {void}
  */
-export const Nav = (element) => {
-  const appName = "Une App";
+export const Nav = async (element) => {
+  const appName = "Sport Plus";
+  const card = await getTaskFromLocalStorage("articles");
+
+  function getQuantity(articles) {
+    let quantity = 0;
+    for (let i = 0; i < articles.length; i++) {
+      quantity += parseInt(articles[i].quantity);
+    }
+    return quantity;
+  }
+  const quantity = getQuantity(card);
 
   /**
    * @type {Link[]}
    */
   const links = [
-    { href: "/", text: "Accueil" },
-    { href: "/compteur", text: "Compteur" },
+    { href: "/", text: "Boutique" },
     { href: "/contact", text: "Contact" },
-    { href: "/utilisateurs", text: "Utilisateurs" },
   ];
 
   element.innerHTML = `
@@ -40,9 +49,32 @@ export const Nav = (element) => {
                 </li>`
               )
               .join("")}
+      
+              <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <button class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Catégorie
+          </button>
+          <ul class="dropdown-menu ">
+            <li><a class="dropdown-item" href="#">Chaussures</a></li>
+            <li><a class="dropdown-item" href="#">Haut</a></li>
+            <li><a class="dropdown-item" href="#">bas</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
           </ul>
         </div>
       </div>
+      
+      <a href="/panier" class="btn btn-primary position-relative m-2 mx-4"  >
+        <i class="fa-solid fa-basket-shopping fs-3 "></i>
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="card-number">
+          ${quantity}
+          <span class="visually-hidden">unread messages</span>
+        </span>
+      </a>
     </nav>
     `;
 

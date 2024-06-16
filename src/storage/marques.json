@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "name": "nike",
+    "desc": "Fabriqué par les enfants en bengladesh",
+    "img_url": "/img/logo-nike.png"
+  },
+  {
+    "id": 2,
+    "name": "adidas",
+    "desc": "Fabriqué par les enfants je sais pas ou",
+    "img_url": "/img/adidas.png"
+  }
+]

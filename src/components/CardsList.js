@@ -30,7 +30,7 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
         ${TextInput("search", searchInputValue, "search", "Rechercher...")}
       </div>
     </div>
-    <div id="${id}" class="row row-cols-2 row-cols-lg-3">
+    <div id="${id}" class="row row-cols-2 row-cols-lg-3 d-flex ">
     </div>
     <div id="pagination"></div>
     `;
