@@ -3,7 +3,6 @@ import {
   sendTaskInLocalStorage,
 } from "/src/functions/localStorageManager";
 import shoes from "../storage/shoes.json";
-import { send } from "vite";
 
 const Panier = async (element) => {
   const card = await getTaskFromLocalStorage("articles");
@@ -21,27 +20,40 @@ const Panier = async (element) => {
     <div className="container">
         ${card
           .map((article) => {
-            total += article.article.price;
+            total += article.article.price * article.quantity;
             return `
-                <div class="border rounded mb-2 p-1 px-3 d-flex ">
+                <div class="border rounded mb-2 p-1 px-3 d-flex align-items-center">
                     <div class="w-25"> ${article.article.name} </div>
-                    <div class="w-25 text-secondary fst-italic"> ${
+                    <div class="w-50 text-secondary fst-italic"> <span>${
                       article.article.price
-                    } €  <span> x ${article.quantity}</span></div>
-                    <div class="w-25"> ${(
-                      article.article.price * article.quantity
-                    ).toFixed(2)} € </div>
+                    }</span> €  x  ${article.quantity}  
+                   
+                          <button id="${
+                            article.id
+                          }" class="btn rounded border plus-btn">+</button>
+                          <button id="${
+                            article.id
+                          }"  class="btn rounded border minus-btn">-</button>
+                      
+                        
+                    </div>
+                    <div class="w-25 "> 
+                     
+                      <span class="some">${(
+                        article.article.price * article.quantity
+                      ).toFixed(2)}</span> € 
+                  </div>
 
                    
                     <div id=${
-                      article.article.id
-                    } class="text-danger flex-grow-1 text-end bin"><i class="fa-solid fa-trash-can"></i></div>
+                      article.id
+                    } class="text-danger flex-grow-1 text-end border-none bin"><i class=" fa-solid fa-trash-can"></i></div>
                 </div>
             `;
           })
           .join("")}
           <div class="d-flex justify-content-between gap-2 mt-4 align-items-center">
-            <button id="to-empty-btn" class="btn btn-danger">Vider le panier</button>
+            <button id="to-empty-btn" class="btn btn-danger ">Vider le panier</button>
             <div class="d-flex justify-content-end gap-2 ">
               <div class="border rounded p-2">Total: ${total.toFixed(2)} €</div>
                 <button id="order-btn" class="btn btn-primary">Commander</button>
@@ -88,8 +100,45 @@ const Panier = async (element) => {
   bins.forEach((bin) => {
     bin.addEventListener("click", (e) => {
       const id = e.currentTarget.id;
-      card.filter((c) => c.article.id !== id);
-      sendTaskInLocalStorage("articles", card);
+      const newCard = card.filter((c) => c.id != id);
+      console.log(card);
+      sendTaskInLocalStorage("articles", newCard);
+      window.location.reload();
+    });
+  });
+
+  //increase quantity
+  const plusBtn = document.querySelectorAll(".plus-btn");
+  plusBtn.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const id = parseInt(e.currentTarget.id);
+      const articles = await getTaskFromLocalStorage("articles");
+      articles.forEach((article) => {
+        if (article.id === id) {
+          article.quantity++;
+        }
+      });
+      sendTaskInLocalStorage("articles", articles);
+      window.location.reload();
+    });
+  });
+
+  //decrease quantity
+  const minusBtn = document.querySelectorAll(".minus-btn");
+  minusBtn.forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const id = parseInt(e.currentTarget.id);
+      const articles = await getTaskFromLocalStorage("articles");
+      articles.forEach((article) => {
+        if (article.id === id) {
+          if (article.quantity <= 0) {
+            return;
+          }
+          article.quantity--;
+          sendTaskInLocalStorage("articles", articles);
+          window.location.reload();
+        }
+      });
     });
   });
 };

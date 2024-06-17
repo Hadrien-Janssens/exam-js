@@ -98,9 +98,11 @@ export const Article = async (element) => {
       parseInt(quantity.value) + parseInt(cardNumber.textContent);
     // add to localStorage
     const articles = await getTaskFromLocalStorage("articles");
+    // create id for card item
+    const id = Date.now();
     //ajouter la quantity et l'id de l'aritcle dans la variables articles
-
     articles.push({
+      id: id,
       article: user,
       quantity: quantity.value,
     });
