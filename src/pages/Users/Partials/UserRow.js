@@ -1,3 +1,4 @@
+import marques from "../../../storage/marques.json";
 /**
  * @typedef {Object} User
  * @property {number} id - L'identifiant de l'utilisateur.
@@ -13,10 +14,13 @@
  * @returns {string} HTML string
  */
 export const UserRow = (article) => {
+  const marque = marques.filter(
+    (marque) => article.marque == parseInt(marque.id)
+  );
   return `
     <tr>
       <td>${article.name}</td>
-      <td>${article.marque}</td>
+      <td>${marque[0].name}</td>
       <td>${article.price} €</td>
       <td><a class="btn btn-primary btn-sm" href="/article?id=${article.id}"><i class="ri-search-eye-line"></i></a></td>
     </tr>

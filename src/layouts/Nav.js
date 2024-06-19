@@ -35,6 +35,7 @@ export const Nav = async (element) => {
   const url = new URL(window.location.href);
   const modeFromQueryString = url.searchParams.get("mode");
   let mode = modeFromQueryString || "grid";
+
   element.innerHTML = `
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -59,7 +60,7 @@ export const Nav = async (element) => {
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="/?categorie=all&mode=${mode}">tous</a></li>
                 <li><a class="dropdown-item" href="/?categorie=shoes&mode=${mode}">Chaussures</a></li>
-                <li><a class="dropdown-item" href="/?categorie=hau&mode=${mode}t">Haut</a></li>
+                <li><a class="dropdown-item" href="/?categorie=haut&mode=${mode}">Haut</a></li>
                 <li><a class="dropdown-item" href="/?categorie=bas&mode=${mode}">Bas</a></li>
               </ul>
             </li>
@@ -132,5 +133,25 @@ export const Nav = async (element) => {
     markAsActive();
     changePageTitle();
     element.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
+  });
+
+  window.addEventListener("add-to-card", () => {
+    let cardNumber = document.querySelector("#card-number");
+    let number = parseInt(cardNumber.textContent);
+    number++;
+    cardNumber.textContent = number;
+  });
+  window.addEventListener("minus-to-card", () => {
+    let cardNumber = document.querySelector("#card-number");
+    let number = parseInt(cardNumber.textContent);
+    number--;
+    cardNumber.textContent = number;
+  });
+  window.addEventListener("delete-article", (e) => {
+    let cardNumber = document.querySelector("#card-number");
+    let number = parseInt(cardNumber.textContent);
+    console.log(e.detail);
+    number = number - e.detail;
+    cardNumber.textContent = number;
   });
 };

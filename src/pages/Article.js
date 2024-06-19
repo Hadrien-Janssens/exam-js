@@ -1,7 +1,6 @@
 import users from "../storage/shoes.json";
 import * as bootstrap from "bootstrap";
 
-import { RoleBadge } from "./Users/Partials/RoleBadge";
 import {
   getTaskFromLocalStorage,
   sendTaskInLocalStorage,
@@ -40,11 +39,24 @@ export const Article = async (element) => {
                   </div>
                   <p>Taille :</p>
                   <div class="d-flex mb-5 gap-1" id="btn-container">
-                    <button class="btn btn-primary">36</button>
-                    <button class="btn border">37</button>
+                    ${
+                      user.categorie === 1
+                        ? `
+                    <button data-size="36" class="btn border btn-primary">36</button>
+                    <button data-size="37" class="btn border">37</button>
                     <button class="btn border">38</button>
                     <button class="btn border">39</button>
                     <button class="btn border">40</button>
+                      `
+                        : `
+                    <button class="btn border btn-primary">XS</button>
+                    <button class="btn border">S</button>
+                    <button class="btn border">M</button>
+                    <button class="btn border">L</button>
+                    <button class="btn border">XL</button>
+                        `
+                    }
+            
                   </div>
                 <button id="add-to-card"  class="btn btn-primary liveToastBtn" >Ajouter au panier</button>
                 <!-- toast  -->
@@ -68,6 +80,12 @@ export const Article = async (element) => {
   const quantity = document.querySelector("#quantity");
   const addBtn = document.querySelector("#add-btn");
   const minusBtn = document.querySelector("#minus-btn");
+  let size = undefined;
+  if (user.categorie === 1) {
+    size = 36;
+  } else {
+    size = "XS";
+  }
 
   // increaseQuandtity
   addBtn.addEventListener("click", () => {
@@ -105,6 +123,7 @@ export const Article = async (element) => {
       id: id,
       article: user,
       quantity: quantity.value,
+      size: size,
     });
     sendTaskInLocalStorage("articles", articles);
   });
@@ -129,6 +148,7 @@ export const Article = async (element) => {
         btn.classList.remove("btn-primary");
       });
       btn.classList.add("btn-primary");
+      size = btn.textContent;
     });
   });
 };

@@ -23,7 +23,10 @@ const Panier = async (element) => {
             total += article.article.price * article.quantity;
             return `
                 <div class="border rounded mb-2 p-1 px-3 d-flex align-items-center">
-                    <div class="w-25"> ${article.article.name} </div>
+                    <div class="w-25"><a href="/article?id=${
+                      article.article.id
+                    }"> ${article.article.name}</a> </div>
+                    <div class="w-25">taille: ${article.size} </div>
                     <div class="w-50 text-secondary fst-italic"> <span>${
                       article.article.price
                     }</span> €  x  ${article.quantity}  
@@ -45,9 +48,9 @@ const Panier = async (element) => {
                   </div>
 
                    
-                    <div id=${
-                      article.id
-                    } class="text-danger flex-grow-1 text-end border-none bin"><i class=" fa-solid fa-trash-can"></i></div>
+                    <div id=${article.id} 
+                      data-quantity = ${article.quantity}
+                    class="text-danger flex-grow-1 text-end border-none bin"><i class=" fa-solid fa-trash-can"></i></div>
                 </div>
             `;
           })
@@ -101,9 +104,14 @@ const Panier = async (element) => {
     bin.addEventListener("click", (e) => {
       const id = e.currentTarget.id;
       const newCard = card.filter((c) => c.id != id);
-      console.log(card);
       sendTaskInLocalStorage("articles", newCard);
-      window.location.reload();
+      // window.location.reload();
+      window.dispatchEvent(
+        new CustomEvent("delete-article", {
+          detail: e.currentTarget.dataset.quantity,
+        })
+      );
+      Panier(element);
     });
   });
 
@@ -119,7 +127,8 @@ const Panier = async (element) => {
         }
       });
       sendTaskInLocalStorage("articles", articles);
-      window.location.reload();
+      window.dispatchEvent(new CustomEvent("add-to-card"));
+      Panier(element);
     });
   });
 
@@ -136,7 +145,8 @@ const Panier = async (element) => {
           }
           article.quantity--;
           sendTaskInLocalStorage("articles", articles);
-          window.location.reload();
+          window.dispatchEvent(new CustomEvent("minus-to-card"));
+          Panier(element);
         }
       });
     });
