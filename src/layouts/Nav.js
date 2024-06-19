@@ -32,6 +32,9 @@ export const Nav = async (element) => {
     { href: "/contact", text: "Contact" },
   ];
 
+  const url = new URL(window.location.href);
+  const modeFromQueryString = url.searchParams.get("mode");
+  let mode = modeFromQueryString || "grid";
   element.innerHTML = `
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -54,10 +57,10 @@ export const Nav = async (element) => {
                 tous
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/?categorie=all">tous</a></li>
-                <li><a class="dropdown-item" href="/?categorie=shoes">Chaussures</a></li>
-                <li><a class="dropdown-item" href="/?categorie=haut">Haut</a></li>
-                <li><a class="dropdown-item" href="/?categorie=bas">Bas</a></li>
+              <li><a class="dropdown-item" href="/?categorie=all&mode=${mode}">tous</a></li>
+                <li><a class="dropdown-item" href="/?categorie=shoes&mode=${mode}">Chaussures</a></li>
+                <li><a class="dropdown-item" href="/?categorie=hau&mode=${mode}t">Haut</a></li>
+                <li><a class="dropdown-item" href="/?categorie=bas&mode=${mode}">Bas</a></li>
               </ul>
             </li>
           </ul>

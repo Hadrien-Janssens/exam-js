@@ -22,7 +22,7 @@ export const Home = (element) => {
 
   element.innerHTML = `
     <div class="d-flex justify-content-between">
-      <h1>Utilisateurs</h1>
+      <h1>Produits</h1>
       <div>
         <button id="grid-mode-btn" class="btn btn-sm btn-secondary mr-3">
           <i class="ri-layout-grid-line"></i>

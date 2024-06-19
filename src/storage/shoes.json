@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Nike Air Max 95",
-    "desc": "basket",
+    "desc": "Basket",
     "img_url": "/img/shoes1.jpeg",
     "marque": 1,
     "categorie": 1,
@@ -11,7 +11,7 @@
   {
     "id": 2,
     "name": "Nike PH",
-    "desc": "basket",
+    "desc": "Basket",
     "img_url": "/img/dunk-low-retro-shoes-Q2Gtpp.png",
     "marque": 1,
     "categorie": 1,
@@ -20,7 +20,7 @@
   {
     "id": 3,
     "name": "Adidas Stan Smith",
-    "desc": "basket",
+    "desc": "Basket",
     "img_url": "/img/images.jpeg",
     "marque": 2,
     "categorie": 1,
@@ -28,11 +28,155 @@
   },
   {
     "id": 4,
-    "name": "T-shirt",
-    "desc": "Superbe t-shirt en coton",
-    "img_url": "/img/tshirt.webp",
+    "name": "Nike Air Force 1",
+    "desc": "Basket",
+    "img_url": "/img/air-force-1.jpeg",
+    "marque": 1,
+    "categorie": 1,
+    "price": 89.99
+  },
+  {
+    "id": 5,
+    "name": "Adidas Superstar",
+    "desc": "Basket",
+    "img_url": "/img/superstar.jpeg",
+    "marque": 2,
+    "categorie": 1,
+    "price": 99.95
+  },
+  {
+    "id": 6,
+    "name": "Nike Air Zoom Pegasus",
+    "desc": "Basket",
+    "img_url": "/img/pegasus.jpeg",
+    "marque": 1,
+    "categorie": 1,
+    "price": 119.95
+  },
+  {
+    "id": 7,
+    "name": "Adidas Ultra Boost",
+    "desc": "Basket",
+    "img_url": "/img/ultra-boost.jpeg",
+    "marque": 2,
+    "categorie": 1,
+    "price": 129.95
+  },
+  {
+    "id": 8,
+    "name": "Nike Dri-FIT T-Shirt",
+    "desc": "T-shirt de sport",
+    "img_url": "/img/dri-fit-tshirt.jpeg",
     "marque": 1,
     "categorie": 2,
-    "price": 35.0
+    "price": 29.99
+  },
+  {
+    "id": 9,
+    "name": "Adidas Originals Hoodie",
+    "desc": "Pull à capuche",
+    "img_url": "/img/originals-hoodie.jpeg",
+    "marque": 2,
+    "categorie": 2,
+    "price": 59.95
+  },
+  {
+    "id": 10,
+    "name": "Nike Therma-FIT Fleece",
+    "desc": "Gilet thermique",
+    "img_url": "/img/therma-fit-fleece.jpeg",
+    "marque": 1,
+    "categorie": 2,
+    "price": 69.95
+  },
+  {
+    "id": 11,
+    "name": "Adidas Climalite T-Shirt",
+    "desc": "T-shirt de sport",
+    "img_url": "/img/climalite-tshirt.jpeg",
+    "marque": 2,
+    "categorie": 2,
+    "price": 25.95
+  },
+  {
+    "id": 12,
+    "name": "Nike Sportswear Track Pants",
+    "desc": "Pantalon de sport",
+    "img_url": "/img/track-pants.jpeg",
+    "marque": 1,
+    "categorie": 3,
+    "price": 49.95
+  },
+  {
+    "id": 13,
+    "name": "Adidas Jogging Pants",
+    "desc": "Pantalon de jogging",
+    "img_url": "/img/jogging-pants.jpeg",
+    "marque": 2,
+    "categorie": 3,
+    "price": 54.95
+  },
+  {
+    "id": 14,
+    "name": "Nike Running Shorts",
+    "desc": "Short de course",
+    "img_url": "/img/running-shorts.jpeg",
+    "marque": 1,
+    "categorie": 3,
+    "price": 34.95
+  },
+  {
+    "id": 15,
+    "name": "Adidas Soccer Shorts",
+    "desc": "Short de football",
+    "img_url": "/img/soccer-shorts.jpeg",
+    "marque": 2,
+    "categorie": 3,
+    "price": 29.95
+  },
+  {
+    "id": 16,
+    "name": "Nike Sports Bra",
+    "desc": "Brassière de sport",
+    "img_url": "/img/sports-bra.jpeg",
+    "marque": 1,
+    "categorie": 2,
+    "price": 39.95
+  },
+  {
+    "id": 17,
+    "name": "Adidas Training Tank",
+    "desc": "Débardeur de sport",
+    "img_url": "/img/training-tank.jpeg",
+    "marque": 2,
+    "categorie": 2,
+    "price": 24.95
+  },
+  {
+    "id": 18,
+    "name": "Nike Dry Training Shorts",
+    "desc": "Short de training",
+    "img_url": "/img/dry-training-shorts.jpeg",
+    "marque": 1,
+    "categorie": 3,
+    "price": 32.95
+  },
+  {
+    "id": 19,
+    "name": "Adidas Trefoil Shorts",
+    "desc": "Short classique",
+    "img_url": "/img/trefoil-shorts.jpeg",
+    "marque": 2,
+    "categorie": 3,
+    "price": 27.95
+  },
+  {
+    "id": 20,
+    "name": "Nike Court Victory Skirt",
+    "desc": "Jupe de tennis",
+    "img_url": "/img/court-victory-skirt.jpeg",
+    "marque": 1,
+    "categorie": 3,
+    "price": 39.95
   }
 ]
