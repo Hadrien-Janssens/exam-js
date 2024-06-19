@@ -25,5 +25,14 @@
     "marque": 2,
     "categorie": 1,
     "price": 109.95
+  },
+  {
+    "id": 4,
+    "name": "T-shirt",
+    "desc": "Superbe t-shirt en coton",
+    "img_url": "/img/tshirt.webp",
+    "marque": 1,
+    "categorie": 2,
+    "price": 35.0
   }
 ]

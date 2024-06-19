@@ -1,5 +1,3 @@
-import { RoleBadge } from "./RoleBadge";
-
 /**
  * @typedef {Object} User
  * @property {number} id - L'identifiant de l'utilisateur.
@@ -14,15 +12,13 @@ import { RoleBadge } from "./RoleBadge";
  * @param {User} user
  * @returns {string} HTML string
  */
-export const UserRow = (user) => {
+export const UserRow = (article) => {
   return `
     <tr>
-      <td>${user.name}</td>
-      <td>${user.email}</td>
-      <td>${RoleBadge(user.role)}</td>
-      <td><a class="btn btn-primary btn-sm" href="/utilisateur?id=${
-        user.id
-      }"><i class="ri-search-eye-line"></i></a></td>
+      <td>${article.name}</td>
+      <td>${article.marque}</td>
+      <td>${article.price} €</td>
+      <td><a class="btn btn-primary btn-sm" href="/article?id=${article.id}"><i class="ri-search-eye-line"></i></a></td>
     </tr>
     `;
 };

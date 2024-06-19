@@ -40,7 +40,7 @@ export const Nav = async (element) => {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             ${links
               .map(
                 (link) => `
@@ -49,45 +49,37 @@ export const Nav = async (element) => {
                 </li>`
               )
               .join("")}
-      
-              <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <button class="btn  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            Catégorie
-          </button>
-          <ul class="dropdown-menu ">
-            <li><a class="dropdown-item" href="#">Chaussures</a></li>
-            <li><a class="dropdown-item" href="#">Haut</a></li>
-            <li><a class="dropdown-item" href="#">bas</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                tous
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/?categorie=all">tous</a></li>
+                <li><a class="dropdown-item" href="/?categorie=shoes">Chaussures</a></li>
+                <li><a class="dropdown-item" href="/?categorie=haut">Haut</a></li>
+                <li><a class="dropdown-item" href="/?categorie=bas">Bas</a></li>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
-    </div>
-          </ul>
+          <a href="/panier" class="btn btn-primary position-relative m-2 mx-4">
+            <i class="fa-solid fa-basket-shopping fs-3"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="card-number">
+              ${quantity}
+              <span class="visually-hidden">unread messages</span>
+            </span>
+          </a>
         </div>
       </div>
-      
-      <a href="/panier" class="btn btn-primary position-relative m-2 mx-4"  >
-        <i class="fa-solid fa-basket-shopping fs-3 "></i>
-        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="card-number">
-          ${quantity}
-          <span class="visually-hidden">unread messages</span>
-        </span>
-      </a>
     </nav>
-    `;
+  `;
 
   // Remplace les liens par des événements de navigation
   const replaceLinksByEvents = () => {
-    const navLinks = element.querySelectorAll("a");
+    const navLinks = element.querySelectorAll("a.nav-link");
 
     const linkClickHandler = (event) => {
-      // Empêche la navigation par défaut
       event.preventDefault();
-      // Modifie l'URL de la page sans recharger la page
       window.history.pushState({}, "", event.target.href);
-      // Déclenche l'événement route-changed pour changer de page sans recharger la page
       element.dispatchEvent(new CustomEvent(ROUTE_CHANGED_EVENT));
 
       removeActive();
@@ -95,21 +87,18 @@ export const Nav = async (element) => {
       changePageTitle();
     };
 
-    // Ajoute un écouteur d'événement sur chaque lien de navigation
     for (let i = 0; i < navLinks.length; i++) {
       navLinks[i].addEventListener("click", linkClickHandler);
     }
   };
 
-  // Supprime la classe active des liens de navigation
   const removeActive = () => {
-    const activeLink = element.querySelector("a.active");
+    const activeLink = element.querySelector("a.nav-link.active");
     if (activeLink) {
       activeLink.classList.remove("active");
     }
   };
 
-  // Ajoute la classe active au lien de navigation correspondant à l'URL de la page courante
   const markAsActive = () => {
     const activeLink = element.querySelector(
       `a.nav-link[href="${window.location.pathname}"]`
@@ -120,11 +109,9 @@ export const Nav = async (element) => {
     activeLink.classList.add("active");
   };
 
-  // Modifie le titre de la page en fonction du lien de navigation actif
   const changePageTitle = () => {
-    const activeLink = element.querySelector("a.active");
+    const activeLink = element.querySelector("a.nav-link.active");
 
-    // Si la page courante n'est pas une page de navigation, on affiche uniquement le nom de l'application
     if (!activeLink) {
       document.title = appName;
       return;
@@ -133,12 +120,10 @@ export const Nav = async (element) => {
     document.title = `${activeLink.textContent} - ${appName}`;
   };
 
-  // Initialise la barre de navigation
   markAsActive();
   replaceLinksByEvents();
   changePageTitle();
 
-  // Ajoute un écouteur d'événement pour gérer les événements de navigation du navigateur (précédent/suivant)
   window.addEventListener("popstate", () => {
     removeActive();
     markAsActive();
