@@ -9,6 +9,7 @@ import { Home } from "./pages/Home";
 import { Article } from "./pages/Article";
 import { Categorie } from "./pages/categorie/Categorie";
 import Panier from "./pages/Panier";
+import { Favoris } from "./pages/Favoris";
 
 const routes = {
   "/": Home,
@@ -16,6 +17,7 @@ const routes = {
   "/categorie": Categorie,
   "/article": Article,
   "/panier": Panier,
+  "/favoris": Favoris,
 };
 
 app("#app", routes);

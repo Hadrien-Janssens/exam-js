@@ -16,6 +16,7 @@ import marques from "../../../storage/marques.json";
  * @returns {string} HTML string
  */
 export const UserCard = (user) => {
+  console.log(user);
   const marque = marques.find((marque) => marque.id === user.marque);
 
   return `
@@ -23,9 +24,13 @@ export const UserCard = (user) => {
   <a class="card user-link text-decoration-none" href="/article?id=${user.id}">
       <figure id="card-accueil" class="w-100">
         <img src="${user.img_url}" class="w-100"  />
-      </figure>
+      
+        </figure>
       <div class="card-body flex-shrink-1 ">
-        <h5 class="card-title">${user.name}</h5>
+        <div class="d-flex justify-content-between align-items-center">
+          <div><h5 class="card-title">${user.name}</h5> </div> 
+          <div data-heart="heart" data-id="${user.id}" class="text-danger h4 "><i class="fa-regular fa-heart"></i></div>
+        </div>
         <p class="card-text">${user.desc}</p>
         <p> ${user.price} €</p>
         <p> ${marque.name} </p>

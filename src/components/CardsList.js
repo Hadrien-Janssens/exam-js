@@ -1,6 +1,11 @@
 import { ROUTE_CHANGED_EVENT } from "../framework/app";
+import {
+  getTaskFromLocalStorage,
+  sendTaskInLocalStorage,
+} from "../functions/localStorageManager";
 import { Pagination } from "./Pagination";
 import { TextInput } from "./TextInput";
+import articles from "../storage/shoes.json";
 
 /**
  * Un composant pour afficher une liste de cartes paginée et filtrable.
@@ -141,5 +146,25 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
     currentPage =
       parseInt(new URL(window.location).searchParams.get("page")) || 1;
     filterAndPaginate();
+  });
+
+  //ajout evenement like
+  const hearts = Array.from(document.querySelectorAll('[data-heart="heart"]'));
+  hearts.forEach((heart) => {
+    heart.addEventListener("click", async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      heart.firstChild.classList.toggle("fa-solid");
+      const favoris = await getTaskFromLocalStorage("favoris");
+      const likedArticle = articles.filter(
+        (article) => article.id == heart.dataset.id
+      );
+      console.log(likedArticle);
+
+      favoris.push({
+        article: likedArticle,
+      });
+      sendTaskInLocalStorage("favoris", favoris);
+    });
   });
 };

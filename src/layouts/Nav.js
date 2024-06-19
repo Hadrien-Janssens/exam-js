@@ -30,6 +30,7 @@ export const Nav = async (element) => {
   const links = [
     { href: "/", text: "Boutique" },
     { href: "/contact", text: "Contact" },
+    { href: "/favoris", text: "Favoris" },
   ];
 
   const url = new URL(window.location.href);
@@ -55,10 +56,10 @@ export const Nav = async (element) => {
               .join("")}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                tous
+                Tous
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/?categorie=all&mode=${mode}">tous</a></li>
+              <li><a class="dropdown-item" href="/?categorie=all&mode=${mode}">Tous</a></li>
                 <li><a class="dropdown-item" href="/?categorie=shoes&mode=${mode}">Chaussures</a></li>
                 <li><a class="dropdown-item" href="/?categorie=haut&mode=${mode}">Haut</a></li>
                 <li><a class="dropdown-item" href="/?categorie=bas&mode=${mode}">Bas</a></li>
