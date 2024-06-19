@@ -17,8 +17,8 @@ export const Article = async (element) => {
   // si l'utilisateur n'existe pas, on affiche un message d'erreur
   if (!user) {
     element.innerHTML = `
-          <h1>Utilisateur non trouvé</h1>
-          <p>L'utilisateur avec l'identifiant ${articleId} n'existe pas.</p>
+          <h1>Article non trouvé</h1>
+          <p>L'article avec l'identifiant ${articleId} n'existe pas.</p>
           `;
     return;
   }
