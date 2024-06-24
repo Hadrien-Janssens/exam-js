@@ -1,3 +1,4 @@
+import { getTaskFromLocalStorage } from "../../../functions/localStorageManager";
 import marques from "../../../storage/marques.json";
 /**
  * @typedef {Object} User
@@ -16,8 +17,9 @@ import marques from "../../../storage/marques.json";
  * @returns {string} HTML string
  */
 export const UserCard = (user) => {
-  console.log(user);
   const marque = marques.find((marque) => marque.id === user.marque);
+  // const favoris = getTaskFromLocalStorage("favoris");
+  // console.log(favoris);
 
   return `
   <div class="p-2 ">

@@ -159,11 +159,8 @@ export const CardsList = (element, items, itemTemplate, searchableFields) => {
       const likedArticle = articles.filter(
         (article) => article.id == heart.dataset.id
       );
-      console.log(likedArticle);
 
-      favoris.push({
-        article: likedArticle,
-      });
+      favoris.push(...likedArticle);
       sendTaskInLocalStorage("favoris", favoris);
     });
   });
