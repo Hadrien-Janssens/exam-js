@@ -28,9 +28,9 @@ export const Nav = async (element) => {
    * @type {Link[]}
    */
   const links = [
-    { href: "https://exam-js-henna.vercel.app/", text: "Boutique" },
-    { href: "https://exam-js-henna.vercel.app/contact", text: "Contact" },
-    { href: "https://exam-js-henna.vercel.app/favoris", text: "Favoris" },
+    { href: "/", text: "Boutique" },
+    { href: "/contact", text: "Contact" },
+    { href: "/favoris", text: "Favoris" },
   ];
 
   const url = new URL(window.location.href);
