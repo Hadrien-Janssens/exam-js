@@ -1,6 +1,6 @@
 /**
  * PrimaryButton Component
- * 
+ *
  * @param {string} label - Le texte du bouton.
  * @param {string} type - Le type du bouton.
  * @param {string} id - L'identifiant du bouton.

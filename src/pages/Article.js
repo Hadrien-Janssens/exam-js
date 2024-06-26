@@ -1,4 +1,4 @@
-import users from "../storage/shoes.json";
+import users from "../storage/articles.json";
 import * as bootstrap from "bootstrap";
 
 import {

@@ -2,7 +2,6 @@ import {
   getTaskFromLocalStorage,
   sendTaskInLocalStorage,
 } from "/src/functions/localStorageManager";
-import shoes from "../storage/shoes.json";
 
 const Panier = async (element) => {
   const card = await getTaskFromLocalStorage("articles");

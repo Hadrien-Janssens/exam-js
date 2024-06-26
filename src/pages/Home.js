@@ -1,9 +1,9 @@
-import users from "../storage/shoes.json";
+import articles from "../storage/articles.json";
 
 import { CardsList } from "../components/CardsList";
 import { DataTable } from "../components/DataTable";
-import { UserCard } from "./Users/Partials/UserCard";
-import { UserRow } from "./Users/Partials/UserRow";
+import { ArticleCard } from "./Users/Partials/ArticleCard";
+import { ArticleRow } from "./Users/Partials/ArticleRow";
 
 /**
  * Page de la liste des utilisateurs
@@ -32,32 +32,32 @@ export const Home = (element) => {
         </button>
       </div>
     </div>
-    <div id="users-list"></div>
+    <div id="articles-list"></div>
     `;
 
-  const usersList = element.querySelector("#users-list");
+  const articlesList = element.querySelector("#articles-list");
 
   //filtrer les articles
-  let filterdUsers = users;
+  let filteredArticles = articles;
   if (categorie === "shoes") {
-    filterdUsers = users.filter((user) => user.categorie === 1);
+    filteredArticles = articles.filter((article) => article.categorie === 1);
   } else if (categorie === "haut") {
-    filterdUsers = users.filter((user) => user.categorie === 2);
+    filteredArticles = articles.filter((article) => article.categorie === 2);
   } else if (categorie === "bas") {
-    filterdUsers = users.filter((user) => user.categorie === 3);
+    filteredArticles = articles.filter((article) => article.categorie === 3);
   } else if (categorie === "all") {
-    filterdUsers = users;
+    filteredArticles = articles;
   }
 
   // Fonction pour afficher les utilisateurs en fonction du mode d'affichage
   const render = () => {
     if (mode === "grid") {
-      CardsList(usersList, filterdUsers, UserCard, ["name"]);
+      CardsList(articlesList, filteredArticles, ArticleCard, ["name"]);
     } else if (mode === "table") {
       DataTable(
-        usersList,
-        filterdUsers,
-        UserRow,
+        articlesList,
+        filteredArticles,
+        ArticleRow,
         ["name"],
         ["Nom", "Marque", "Prix", "Actions"]
       );

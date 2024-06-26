@@ -5,7 +5,7 @@ import {
 } from "../functions/localStorageManager";
 import { Pagination } from "./Pagination";
 import { TextInput } from "./TextInput";
-import articles from "../storage/shoes.json";
+import articles from "../storage/articles.json";
 
 /**
  * Un composant pour afficher une liste de cartes paginée et filtrable.

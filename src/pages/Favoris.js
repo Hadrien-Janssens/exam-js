@@ -1,9 +1,7 @@
-import users from "../storage/shoes.json";
-
 import { CardsList } from "../components/CardsList";
 import { DataTable } from "../components/DataTable";
-import { UserCard } from "./Users/Partials/UserCard";
-import { UserRow } from "./Users/Partials/UserRow";
+import { ArticleCard } from "./Users/Partials/ArticleCard";
+import { ArticleRow } from "./Users/Partials/ArticleRow";
 import { getTaskFromLocalStorage } from "../functions/localStorageManager";
 
 /**
@@ -56,12 +54,12 @@ export const Favoris = async (element) => {
   // Fonction pour afficher les utilisateurs en fonction du mode d'affichage
   const render = () => {
     if (mode === "grid") {
-      CardsList(usersList, filterdUsers, UserCard, ["name"]);
+      CardsList(usersList, filterdUsers, ArticleCard, ["name"]);
     } else if (mode === "table") {
       DataTable(
         usersList,
         filterdUsers,
-        UserRow,
+        ArticleRow,
         ["name"],
         ["Nom", "Marque", "Prix", "Actions"]
       );

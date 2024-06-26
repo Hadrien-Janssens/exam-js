@@ -1,6 +1,6 @@
 import marques from "../../../storage/marques.json";
 /**
- * @typedef {Object} User
+ * @typedef {Object} Article
  * @property {number} id - L'identifiant de l'utilisateur.
  * @property {string} name - Le nom de l'utilisateur.
  * @property {string} email - L'adresse email de l'utilisateur.
@@ -10,10 +10,10 @@ import marques from "../../../storage/marques.json";
 /**
  * Affiche une ligne d'un tableau d'utilisateurs
  *
- * @param {User} user
+ * @param {Article} article
  * @returns {string} HTML string
  */
-export const UserRow = (article) => {
+export const ArticleRow = (article) => {
   const marque = marques.filter(
     (marque) => article.marque == parseInt(marque.id)
   );

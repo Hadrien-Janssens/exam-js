@@ -1,8 +1,8 @@
 import { CardsList } from "../../components/CardsList";
 import { DataTable } from "../../components/DataTable";
 import users from "../../storage/users.json";
-import { UserCard } from "./Partials/UserCard";
-import { UserRow } from "./Partials/UserRow";
+import { ArticleCard } from "./Partials/ArticleCard";
+import { ArticleRow } from "./Partials/ArticleRow";
 
 /**
  * Page de la liste des utilisateurs
@@ -37,12 +37,12 @@ export const Users = (element) => {
   // Fonction pour afficher les utilisateurs en fonction du mode d'affichage
   const render = () => {
     if (mode === "grid") {
-      CardsList(usersList, users, UserCard, ["name", "email"]);
+      CardsList(usersList, users, ArticleCard, ["name", "email"]);
     } else if (mode === "table") {
       DataTable(
         usersList,
         users,
-        UserRow,
+        ArticleRow,
         ["name", "email"],
         ["Nom", "Email", "Rôle", "Actions"]
       );
